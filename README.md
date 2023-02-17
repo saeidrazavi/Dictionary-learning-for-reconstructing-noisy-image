@@ -115,5 +115,9 @@ def MOD(Y:np.ndarray, X:np.ndarray):
 
 # MP results 
 
+![2](https://user-images.githubusercontent.com/67091916/219654668-9985b5ed-03af-48f9-8754-7a4d6f3f04b5.png)
+![3](https://user-images.githubusercontent.com/67091916/219654675-1b06b789-a0d9-4478-890a-09fdb0496744.png)
+![4](https://user-images.githubusercontent.com/67091916/219654662-8f024633-a80f-410b-ae88-7e28526ed537.png)
+
 
 ## OMP results 

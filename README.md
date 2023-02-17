@@ -6,11 +6,11 @@ Our goal is to use tools of linear algebra (MP,OMP,MOD) to reconstruct the noisy
 ## What is dictionary learning?
 Dictionary learning is the method of learning a matrix, called a dictionary, such that we can write a signal as a linear combination of as few columns from the matrix as possible.
 
-When using dictionary learning for images we take advantage of the property that natural images can be represented in a sparse way. This means that if we have a set of basic image features any image can be written as a linear combination of only a few basic features. The matrix we call a dictionary is such a set. Each column of the dictionary is one basic image features. In the litterature these feature vectors are called atoms.
+When using dictionary learning for images we take advantage of the property that natural images can be represented in a sparse way. This means that if we have a set of basic image features any image can be written as a linear combination of only a few basic features. The matrix we call a dictionary is such a set. Each column of the dictionary is one basic image features. These feature vectors are called atoms.
 
 With dictionary learning we want to find a dictionary, $D$, and a vector with coefficients for the linear combinations, $x$. The vector of an image patches we’ll denote by $y$. Then our goal is to find $D$ and $x$ such that the $error$ $∥y−Dx∥_{2}$ is small. 
 
-## How to update sparse vectors $x$ , assuming that we have a perfect ditionary?
+## How to update sparse vectors $x$ , assuming that we have a perfect dictionary?
 
 for each $x_{i}$ we have following least square problem : 
 
@@ -20,7 +20,7 @@ we know that above problem can be solved using MP(Matching Pursuit). we also can
 
 ## what is MP?
 
-Matching pursuit (MP) is a sparse approximation algorithm which finds the "best matching" projections of multidimensional data onto the span of an over-complete dictionary. in each itteration, we map the residual, into space of each atom in dicionray, and choose atom that decreases the reconstruction error the most. we repeat this procedure until reconstruction error become less or equal to specific threshold. 
+Matching pursuit (MP) is a sparse approximation algorithm which finds the "best matching" projections of multidimensional data onto the span of an over-complete dictionary. in each iteration, we map the residual, into space of each atom in dictionary, and choose atom that decreases the reconstruction error the most. we repeat this procedure until reconstruction error become less or equal to specific threshold. 
 
 * implementation
 
@@ -90,7 +90,7 @@ def OMP(D: np.ndarray, Y: np.ndarray, tol:float) -> np.ndarray:
 ```
 
 # How to learn dictionary? 
-suppose we have all $x_{i}'s$. now we want to learn dicitionary in a way that minimize reconstruction error. that is: 
+suppose we have all $x_{i}'s$. now we want to learn dictionary in a way that minimize reconstruction error. that is: 
 
 $$D^{k}=agmin_{D} \ \sum_{i=1}^{N}||y_{i}-D^{k-1}x_{i}^{k}||$$
 
@@ -100,7 +100,7 @@ $$D^{k}=agmin_{D} ||Y-D^{k-1}X^{k}||_{F}^{2}$$
 
 $$where \ Y \ is \ concatinated \ form \ of \ y_{i}'s \ and \ X  \ is \ concatinated \ form \ of \ x_{i}'s$$
 
-so we can find closed form solution for dicationary and update it in just one step : 
+so we can find closed form solution for dictionary and update it in just one step : 
 
 $$\boxed{D^{K}=YX^{(K)T}(X^{(K)}X^{(K)T})^{-1}}$$
 
